@@ -33,9 +33,13 @@ const AppBody = ({ Component, pageProps }: AppProps) => {
     <>
       <header>
         <nav className="flex items-center justify-between px-6 py-4">
-          <Link href="/" className="font-bold text-lg">
-            Family Command Center
-          </Link>
+          <div className="flex gap-10">
+            <Link href="/" className="font-bold text-lg">
+              Family Command Center
+            </Link>
+            <Link href="/weekly/meal-plan">Weekly Meal Plan</Link>
+            <Link href="/weekly/workout-plan">Weekly Workout Plan</Link>
+          </div>
           <ul className="flex gap-4 font-semibold">
             {people.map((person: Person, index: number) => (
               <li key={person.id}>
