@@ -9,13 +9,19 @@ const TaskList = ({ personId }: { personId: string }) => {
   return (
     <ul>
       {person.tasks.map((task) => (
-        <li key={task.id}>
+        <li key={task.id} className="flex items-center mb-2">
           <input
             type="checkbox"
             checked={task.isCompleted}
             onChange={() => toggleTaskCompletion(personId, task.id)}
           />
-          {task.title}
+          <p
+            className={`ml-2 ${
+              task.isCompleted ? "decoration-solid line-through " : ""
+            }`}
+          >
+            {task.title}
+          </p>
         </li>
       ))}
     </ul>
