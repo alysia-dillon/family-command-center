@@ -6,6 +6,8 @@ import {
   getWeeklyCompletionPercentage,
 } from "@deps/utils/utils";
 import dayjs from "dayjs";
+import { TypographyVariant } from "../typography/typography";
+import Typography from "../typography/typography";
 
 interface TaskCollectionProps {
   people: Person[];
@@ -34,59 +36,46 @@ const TaskCollection = ({ people }: TaskCollectionProps) => {
 
   return (
     <>
-      <h1>Daily, Weekly, and Monthly Tasks</h1>
+      <Typography variant={TypographyVariant.H3}>
+        Daily, Weekly, and Monthly Tasks
+      </Typography>
 
-      {/* Daily Breakdown */}
-      <div className="mb-8">
-        <h2>Tasks Assigned for Today</h2>
-        {todayTasks.length > 0 ? (
-          <ul className="list-disc">
-            {todayTasks.map((task) => (
-              <li key={task.id} className="mb-2">
-                {task.title} - {dayjs(task.dueDate).format("MMM D")} (
-                {task.personName})
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No tasks for today.</p>
-        )}
+      <div className="flex flex-row gap-10 mb-4">
+        {/* Daily Breakdown */}
+        <div>
+          <h2>Tasks Assigned for Today</h2>
+          {todayTasks.length > 0 ? (
+            <ul className="list-disc">
+              {todayTasks.map((task) => (
+                <li key={task.id} className="mb-2">
+                  {task.title} - {dayjs(task.dueDate).format("MMM D")} (
+                  {task.personName})
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No tasks for today.</p>
+          )}
+        </div>
+
+        {/* Weekly Breakdown */}
+        <div>
+          <h2>Tasks for This Week</h2>
+          {weekTasks.length > 0 ? (
+            <ul className="list-disc">
+              {weekTasks.map((task) => (
+                <li key={task.id} className="mb-2">
+                  {task.title} - {dayjs(task.dueDate).format("MMM D")} (
+                  {task.personName})
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No tasks for this week.</p>
+          )}
+        </div>
       </div>
-
-      {/* Weekly Breakdown */}
-      <div className="mb-8">
-        <h2>Tasks for This Week</h2>
-        {weekTasks.length > 0 ? (
-          <ul className="list-disc">
-            {weekTasks.map((task) => (
-              <li key={task.id} className="mb-2">
-                {task.title} - {dayjs(task.dueDate).format("MMM D")} (
-                {task.personName})
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No tasks for this week.</p>
-        )}
-        <h3>Weekly Completion Percentage: {completionPercentage}%</h3>
-      </div>
-
-      {/* Monthly Breakdown
-      <div className="mb-8">
-        <h2>Tasks for This Month</h2>
-        {monthTasks.length > 0 ? (
-          <ul className="list-disc">
-            {monthTasks.map((task: Task) => (
-              <li key={task.id} className="mb-2">
-                {task.title} - {dayjs(task.dueDate).format("MMM D")} (
-                {task.personName})
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No tasks for this month.</p>
-        )}
-      </div> */}
+      <h3>Weekly Completion Percentage: {completionPercentage}%</h3>
     </>
   );
 };

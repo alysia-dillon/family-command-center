@@ -1,21 +1,22 @@
 export interface Task {
-  id: string;
-  title: string;
-  isCompleted: boolean;
   dueDate: Date;
-  personName: string;
+  id: string;
+  isCompleted?: boolean;
+  personName?: string;
+  title: string;
 }
 
 export interface Event {
-  id: string;
-  title: string;
   date: Date;
-  personName: string;
+  id: string;
+  personName?: string;
+  time: string;
+  title: string;
 }
 
 export interface Person {
+  events: Event[];
   id: string;
   name: string;
   tasks: Task[];
-  events: Event[];
 }

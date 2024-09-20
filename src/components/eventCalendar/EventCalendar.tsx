@@ -1,5 +1,6 @@
 import { Person } from "@deps/models/types";
 import dayjs from "dayjs";
+import Typography, { TypographyVariant } from "../typography/typography";
 
 interface EventCalendarProps {
   people: Person[];
@@ -8,6 +9,7 @@ interface EventCalendarProps {
 const EventCalendar = ({ people }: EventCalendarProps) => {
   const currentMonth = dayjs().month(); // Get the current month
   const currentYear = dayjs().year(); // Get the current year
+  const currentMonthText = dayjs().format("MMMM");
 
   // Create an array of days for the current month
   const daysInMonth = dayjs().daysInMonth();
@@ -60,7 +62,10 @@ const EventCalendar = ({ people }: EventCalendarProps) => {
 
   return (
     <div className="mb-8">
-      <h2>Calendar View of Events</h2>
+      <Typography variant={TypographyVariant.H3}>
+        Calendar View of Events
+      </Typography>
+      <Typography variant={TypographyVariant.H3}>{currentMonthText}</Typography>
       <div className="grid grid-cols-7 gap-1">
         {/* Render Day Headers */}
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
