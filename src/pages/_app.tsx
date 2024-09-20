@@ -37,8 +37,7 @@ const AppBody = ({ Component, pageProps }: AppProps) => {
             <Link href="/" className="font-bold text-lg">
               Family Command Center
             </Link>
-            <Link href="/weekly/meal-plan">Weekly Meal Plan</Link>
-            <Link href="/weekly/workout-plan">Weekly Workout Plan</Link>
+            {/* Weekly Features Placeholder */}
           </div>
           <ul className="flex gap-4 font-semibold">
             {people.map((person: Person, index: number) => (
